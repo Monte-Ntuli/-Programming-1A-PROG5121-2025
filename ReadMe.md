@@ -36,3 +36,60 @@ It demonstrates **OOP principles**, **unit testing with JUnit**, **GitHub versio
 ---
 
 ## 📂 Project Structure
+
+src/
+├── main/java/za/co/monte/chat/
+│ ├── Login.java # Core class with validation and login methods
+│ └── Main.java # Console-based app entry point
+└── test/java/za/co/monte/chat/
+└── LoginTest.java # JUnit tests for Login class
+
+
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+- Java 17+
+- Maven or NetBeans IDE
+- GitHub account
+
+### Clone the Repository
+```bash
+git clone https://github.com/Monte-Ntuli/-Programming-1A-PROG5121-2025
+cd chat-app-poe
+
+Run the App
+mvn compile exec:java -Dexec.mainClass="za.co.monte.chat.Main"
+or in NetBeans: Run → Main.java
+
+Run Tests
+mvn test
+
+📖 References
+
+Quickblox – Beginner’s Guide to Chat App Architecture - https://quickblox.com/blog/beginners-guide-to-chat-app-architecture/
+
+APA Style – How to cite ChatGPT - https://apastyle.apa.org/blog/how-to-cite-chatgpt
+
+👨‍💻 Author
+
+Name: Banele Kamohelo Mpho Ntuli
+
+Student Number: ST10493444
+
+Module: PROG5121
+
+✅ Rubric Coverage
+
+✔ Username validation implemented
+
+✔ Password validation implemented
+
+✔ Regex cellphone validation (ChatGPT-assisted)
+
+✔ Login authentication messages
+
+✔ JUnit test cases (assertEquals, assertTrue, assertFalse)
+
+✔ Code follows clean standards (no redundancy, clear methods)
