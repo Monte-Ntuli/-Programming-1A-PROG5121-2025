@@ -1,19 +1,23 @@
-package test.java.za.co.monte.chat;
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/UnitTests/JUnit5TestClass.java to edit this template
+ */
+package za.co.monte.chat;
 
-import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.*;
-import za.co.monte.chat.Login;
+import org.junit.jupiter.api.DisplayName;
 
 /**
- * Part-1 tests that mirror the JOptionPane-driven flow:
- * - build a Login from "dialog inputs"
- * - call the same validation methods used by the UI
- * - assert the exact rubric messages
+ *
+ * @author E7240
  */
-public class LoginJOptionFlowTest {
-
+public class LoginTest {
+    
     // ---- Happy path: all three validations pass and registerUser prints 3 success lines ----
     @Test
     @DisplayName("Registration success: username, password, cellphone all valid")
@@ -108,4 +112,5 @@ public class LoginJOptionFlowTest {
         String expected = "Username or password incorrect, please try again.";
         assertEquals(expected, l.returnLoginStatus(ok));
     }
+    
 }
