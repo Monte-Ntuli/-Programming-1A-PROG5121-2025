@@ -1,95 +1,253 @@
-# Chat App – Registration & Login System (Java)
+This project implements a **complete chat system** consisting of:
 
-This project is part of the **PROG5121 PoE** and implements a simple registration and login feature for a chat application.  
-It demonstrates **OOP principles**, **unit testing with JUnit**, **GitHub version control**, and **responsible use of AI tools**.
+* **User Registration**
+* **Login Verification**
+* **Sending Messages**
+* **Storing Messages**
+* **Searching Messages**
+* **Deleting Messages**
+* **Message Reports**
+* **JSON File Handling**
+* **JUnit 5 Unit Testing**
 
----
-
-## 📌 Features
-
-- **Registration system**:
-  - Username validation (must contain an underscore `_` and ≤ 5 characters).
-  - Password complexity rules:
-    - At least 8 characters long
-    - At least 1 capital letter
-    - At least 1 number
-    - At least 1 special character
-  - Cell phone validation:
-    - Must include international code
-    - South African format supported: `+27#########`
-
-- **Login system**:
-  - Verifies stored username and password
-  - Returns success or failure messages
-
-- **Unit Tests (JUnit 5)**:
-  - Test username formatting
-  - Test password complexity
-  - Test cellphone validation
-  - Test login success/failure
-
-- **Message flags for chat extension** (future work):
-  - `Message Sent`
-  - `Message Received`
-  - `Message Read`
+It demonstrates **Object-Oriented Programming (OOP)**, **regex validation**, **Java Swing (JOptionPane) interaction**, **file management**, **arrays**, **parallel arrays**, **Maven/JUnit**, and **responsible, cited use of AI tools (ChatGPT)**.
 
 ---
 
-## 📂 Project Structure
+# 🚀 Features Overview
 
+## ✅ **PART 1 – Registration & Login**
+
+### ✔ Registration includes:
+
+* Username requirements:
+
+  * must contain `_`
+  * max length **≤ 5**
+* Password complexity rules:
+
+  * ≥ 8 characters
+  * at least one **uppercase**
+  * at least one **digit**
+  * at least one **special character**
+* Cellphone validation:
+
+  * must include international code
+  * supports strict SA regex: `+27#########`
+  * *(Regex developed with assistance from ChatGPT – APA reference included)*
+
+### ✔ Login includes:
+
+* Username + password verification
+* Correct authentication messages:
+
+  * **Welcome <name surname> …**
+  * **Incorrect credentials, please try again**
+
+---
+
+# 💬 **PART 2 – Messaging System**
+
+Users can:
+
+* Send messages
+* Discard messages
+* Store messages for later
+* Automatically generate:
+
+  * message ID (10-digit)
+  * message hash:
+
+    ```
+    FirstTwoDigitsOfID:MessageNumber FirstWordLastWord (UPPERCASE)
+    ```
+* Print full message details:
+
+  * ID
+  * Hash
+  * Recipient
+  * Text
+
+Stored messages are written to:
+📄 **messages.json**
+
+Sent messages increment a static counter.
+
+Message validation:
+
+* checks cell number format
+* checks message body (<= 250 chars)
+
+---
+
+# 🧰 **PART 3 – Message Tools (MessageArrays)**
+
+Includes **full PoE-required functionality**:
+
+### ✔ a. Display sender + all recipients
+
+Shows:
+
+```
+Sender: John Doe → Recipient: +27XXXXXXXXX
+Sender: John Doe → Recipient: +27XXXXXXXXX
+```
+
+### ✔ b. Show the longest sent message
+
+### ✔ c. Search by message ID
+
+Returns:
+
+```
+Recipient: +27XXXXXXXXX
+Message: Your message text...
+```
+
+### ✔ d. Search all messages for a recipient
+
+### ✔ e. Delete a message using its hash
+
+(Deletes from the history list)
+
+### ✔ f. Display a full sent-message report
+
+With table-like formatting.
+
+### ✔ g. Send stored messages later
+
+User can pick from stored messages → convert to “SEND”.
+
+### ✔ JSON file reading
+
+`readStoredFromJSON()` loads stored messages into an array.
+
+---
+
+# 📂 **Project Structure**
+
+```
 src/
-├── main/java/za/co/monte/chat/
-│ ├── Login.java # Core class with validation and login methods
-│ └── Main.java # Console-based app entry point
-└── test/java/za/co/monte/chat/
-└── LoginTest.java # JUnit tests for Login class
-
+ ├── main/java/za/co/monte/chat/
+ │     ├── Login.java
+ │     ├── Message.java
+ │     ├── MessageArrays.java
+ │     └── Main.java
+ │
+ └── test/java/za/co/monte/chat/
+       ├── LoginIT.java
+       ├── MessageIT.java
+       ├── MessageArraysIT.java
+       └── MainIT.java
+```
 
 ---
 
-## 🚀 Getting Started
+# 🧪 **JUnit 5 Tests**
 
-### Prerequisites
-- Java 17+
-- Maven or NetBeans IDE
-- GitHub account
+Covers:
 
-### Clone the Repository
+### ✔ Login class
+
+* getters / setters
+* username validation
+* password complexity
+* cellphone regex
+* login result
+* registration status message
+
+### ✔ Message class
+
+* ID generation
+* hash generation
+* body validation
+* send/discard/store logic
+* JSON saving
+* getters
+
+### ✔ MessageArrays
+
+* longest message
+* search by ID
+* search by recipient
+* delete by hash
+* build report
+* read JSON file
+
+---
+
+# 🛠 Getting Started
+
+## Requirements
+
+* Java **17 or 21**
+* NetBeans, IntelliJ or VS Code
+* Maven
+* GitHub
+
+---
+
+## Clone the Repository
+
 ```bash
 git clone https://github.com/Monte-Ntuli/-Programming-1A-PROG5121-2025
 cd chat-app-poe
+```
 
-Run the App
+---
+
+## Run the App (Maven)
+
+```bash
 mvn compile exec:java -Dexec.mainClass="za.co.monte.chat.Main"
-or in NetBeans: Run → Main.java
+```
 
-Run Tests
+### In NetBeans:
+
+`Run → Main.java`
+
+---
+
+## Run All Unit Tests
+
+```bash
 mvn test
+```
 
-📖 References
+---
 
-Quickblox – Beginner’s Guide to Chat App Architecture - https://quickblox.com/blog/beginners-guide-to-chat-app-architecture/
+# 📖 References
 
-APA Style – How to cite ChatGPT - https://apastyle.apa.org/blog/how-to-cite-chatgpt
+**ChatGPT Assistance Citation (APA 7th Edition):**
+OpenAI. (2025). *ChatGPT (Jan 2025 version)* [Large language model]. [https://chat.openai.com](https://chat.openai.com)
 
-👨‍💻 Author
+**Regex Reference:**
+Regular expression guidance and structure generated with assistance from ChatGPT (OpenAI, 2025).
 
-Name: Banele Kamohelo Mpho Ntuli
+**Additional Reading:**
+QuickBlox. (n.d.). *Beginner’s Guide to Chat App Architecture.* [https://quickblox.com/blog/beginners-guide-to-chat-app-architecture/](https://quickblox.com/blog/beginners-guide-to-chat-app-architecture/)
 
-Student Number: ST10493444
+---
 
-Module: PROG5121
+# 👨‍💻 Author
 
-✅ Rubric Coverage
+**Name:** Banele Kamohelo Mpho Ntuli
+**Student Number:** ST10493444
+**Module:** PROG5121 Programming
+**Year:** 2025
 
-✔ Username validation implemented
+# ✅ Rubric Coverage Summary
 
-✔ Password validation implemented
+✔ Username validation
+✔ Password complexity (uppercase, number, special char)
+✔ Cellphone regex validation
+✔ Login authentication
+✔ Message ID & hash
+✔ Store messages in JSON
+✔ Parallel arrays for Part 3
+✔ Longest message
+✔ Search + delete
+✔ Full sent messages report
+✔ JUnit testing (Login, Message, MessageArrays, Main)
+✔ Ethical + APA-formatted ChatGPT citation
 
-✔ Regex cellphone validation (ChatGPT-assisted)
-
-✔ Login authentication messages
-
-✔ JUnit test cases (assertEquals, assertTrue, assertFalse)
-
-✔ Code follows clean standards (no redundancy, clear methods)
